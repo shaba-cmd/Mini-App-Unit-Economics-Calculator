@@ -59,6 +59,15 @@ describe('calculate', () => {
     expect(r.marginPct).toBe(16);
   });
 
+  it('пример 2 из README: выкуп 50% и УСН 15%', () => {
+    const r = calculate({ ...base, buyoutPct: 50, returnLogistics: 100, taxSystem: 'usn15' });
+    expect(r.expensesBeforeTax).toBe(780);
+    expect(r.tax).toBe(33);
+    expect(r.profit).toBe(187);
+    expect(round2(r.marginPct!)).toBe(18.7);
+    expect(round2(r.roiPct!)).toBe(46.75);
+  });
+
   it('при выкупе 100% обратная логистика не влияет на прибыль', () => {
     const r = calculate({ ...base, returnLogistics: 500 });
     expect(r.returnLoss).toBe(0);
