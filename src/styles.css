@@ -261,8 +261,8 @@ select {
 }
 
 .segmented button[aria-pressed='true'] {
-  background: var(--bg);
-  color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
