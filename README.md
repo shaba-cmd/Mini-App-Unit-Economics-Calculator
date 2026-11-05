@@ -45,46 +45,6 @@ npm run preview    # просмотр собранной версии
 BackButton Telegram показываются кнопки на странице, вместо CloudStorage
 используется localStorage.
 
-### Проверка внутри Telegram до деплоя
-
-Telegram открывает Mini App только по HTTPS. Самый простой путь —
-задеплоить на Vercel (ниже). Для быстрой проверки можно пробросить
-локальный сервер через туннель, например:
-
-```bash
-npm run dev
-npx cloudflared tunnel --url http://localhost:5173
-```
-
-и указать полученный `https://...trycloudflare.com` адрес в @BotFather.
-Если Vite ругается на хост, добавьте его в `server.allowedHosts` в
-`vite.config.ts`.
-
-## Деплой на Vercel
-
-1. Залейте репозиторий на GitHub.
-2. На [vercel.com](https://vercel.com) → **Add New → Project** → выберите
-   репозиторий. Настройки подхватятся из `vercel.json`
-   (Framework: Vite, Build: `npm run build`, Output: `dist`).
-3. Нажмите **Deploy**. Через минуту появится адрес вида
-   `https://unit-economics-xxx.vercel.app`.
-
-Каждый пуш в основную ветку будет автоматически пересобирать приложение.
-
-Альтернатива — Netlify: конфиг в `netlify.toml`, шаги те же.
-
-## Привязка к боту
-
-1. В Telegram откройте [@BotFather](https://t.me/BotFather), создайте бота
-   командой `/newbot` (или используйте существующего).
-2. **Кнопка меню** (самый простой способ): `/mybots` → ваш бот →
-   **Bot Settings → Menu Button → Configure menu button** → вставьте
-   HTTPS-адрес с Vercel и название кнопки, например «Калькулятор».
-3. **Прямая ссылка на Mini App** (для портфолио): `/newapp` → выберите бота →
-   название, описание, картинка 640×360 → URL с Vercel → короткое имя,
-   например `calc`. Ссылка будет вида `https://t.me/<имя_бота>/calc`.
-4. Откройте бота на телефоне и нажмите кнопку меню.
-
 ## Формулы
 
 Обозначения: P цена, C себестоимость, k комиссия %, L логистика,
